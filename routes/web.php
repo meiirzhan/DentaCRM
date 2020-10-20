@@ -157,5 +157,4 @@ Route::get('/accountant/cabinet', function () {
 //    return view('accountant');
 //})->name('accountant');
 
-
-
+Route::get('check', 'PagesController@check');
