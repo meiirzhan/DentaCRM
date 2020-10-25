@@ -25,10 +25,7 @@ class CreatePatientsTable extends Migration
             $table->string('price_list')->nullable();
             $table->string('bonus_type')->nullable();
             $table->string('source')->nullable();
-
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
-
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }
