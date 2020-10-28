@@ -2,7 +2,7 @@
 
 @section('title-block') Записи @endsection
 
-@section('content')
+@section('content_a')
     <h3 class="page-name mt-4">Статистика</h3>
     <div class="d-flex flex-column statistics-block">
         <div class="d-flex statistics-bar justify-content-center">

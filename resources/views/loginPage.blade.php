@@ -16,13 +16,16 @@
     <div class="login-block">
         <h5 class="logo-max"><span>Denta</span>CRM</h5>
         <p>Добро пожаловать в DentaCRM!</p>
-        <form action="">
+        <form action="{{route('login')}}" method="post">
+            @csrf
             <div class="d-flex flex-column login-form">
                 <label>
-                    <input required class="form-control user" type="text" placeholder="Логин">
+                    <input name="email" required class="form-control user" type="text" placeholder="Email" value="{{old('email')}}">
+                    @if($errors->first('email') != null)<span class="text-danger" style="font-size: 0.8rem"> {{$errors->first('email')}}</span>@endif
                 </label>
                 <label>
-                    <input required class="form-control pass" type="password" placeholder="Пароль">
+                    <input name="password" required class="form-control pass" type="password" placeholder="Пароль">
+                    @if($errors->first('password') != null)<span class="text-danger" style="font-size: 0.8rem"> {{$errors->first('password')}}</span>@endif
                 </label>
             </div>
             <div class="d-flex justify-content-center mt-2">

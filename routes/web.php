@@ -16,54 +16,49 @@ use Illuminate\Support\Facades\Route;
 /*
 |Войти
 */
-Route::get('/', function () {
-    return view('loginPage');
-})->name('loginPage');
+Route::get('/', 'PagesController@index')->name('loginPage');
 
 /*
 |Регистрация
 */
-Route::get('/registry', function () {
-    return view('registry.notes');
-})->name('registry-notes');
-
-Route::get('/registry/notes', function () {
-    return view('registry.notes-detailed');
-})->name('registry-notes-detailed');
-
-Route::get('/registry/cabinet', function () {
-    return view('registry.cabinet');
-})->name('registry-cabinet');
-
-
+Route::group([
+    'prefix' => 'registry',
+    'middleware' => ['auth', 'registry'],
+], function (){
+    Route::get('/', 'PagesController@showRegistry')->name('registry-notes');
+    Route::get('/notes', 'PagesController@showRegistryDetailed')->name('registry-notes-detailed');
+    Route::get('/cabinet', 'PagesController@showRegistryCabinet')->name('registry-cabinet');
+});
 
 /*
 |Врач-стоматолог
 */
-Route::get('/dentist', function () {
-    return view('dentist.notes');
-})->name('dentist-notes');
-
-Route::get('/dentist/notes', function () {
-    return view('dentist.notes-detailed');
-})->name('dentist-notes-detailed');
-
-Route::get('/dentist/cabinet', function () {
-    return view('dentist.cabinet');
-})->name('dentist-cabinet');
+Route::group([
+    'prefix' => 'dentist',
+    'middleware' => ['auth', 'dentist'],
+], function (){
+    Route::get('/', 'PagesController@showDentist')->name('dentist-notes');
+    Route::get('/notes', 'PagesController@showDentistDetailed')->name('dentist-notes-detailed');
+    Route::get('/docs', 'PagesController@showDentistDocs')->name('dentist.docs');
+    Route::get('/stock', 'PagesController@showDentistStock')->name('dentist.stock');
+    Route::get('/report', 'PagesController@showDentistReport')->name('dentist.report');
+    Route::get('/settings', 'PagesController@showDentistSettings')->name('dentist.settings');
+    Route::get('/cabinet', 'PagesController@showDentistCabinet')->name('dentist-cabinet');
+});
 
 /*
 |Бухгалтер
 */
-Route::get('/accountant', function () {
-    return view('accountant.block');
-})->name('accountant-block');
+Route::group([
+    'prefix' => 'booker',
+    'middleware' => ['auth', 'booker'],
+], function (){
+    Route::get('/', 'PagesController@showBooker')->name('accountant-block');
+    Route::get('/cabinet', 'PagesController@showBookerCabinet')->name('accountant-cabinet');
+});
 
-Route::get('/accountant/cabinet', function () {
-    return view('accountant.cabinet');
-})->name('accountant-cabinet');
-
-
+Route::post('add/product', 'ProductsController@addProduct')->name('product.add');
+Route::get('delete/product/{id}', 'ProductsController@deleteProduct')->name('product.delete');
 
 //Route::get('/registry/notes/modalAddPatient', function () {
 //    return view('registry.modalAddPatient');

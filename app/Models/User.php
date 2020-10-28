@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use TCG\Voyager\Models\Role;
 
 class User extends \TCG\Voyager\Models\User
 {
@@ -38,5 +39,8 @@ class User extends \TCG\Voyager\Models\User
     ];
     public function orders(){
         return $this->hasMany(Order::class);
+    }
+    public function role(){
+        return $this->belongsTo(Roles::class);
     }
 }

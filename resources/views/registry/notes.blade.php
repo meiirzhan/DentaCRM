@@ -2,7 +2,7 @@
 
 @section('title-block') Записи @endsection
 
-@section('content')
+@section('content_r')
     <div class="d-none option-box">
         <div class="d-flex flex-column mr-auto">
             <div class="d-flex flex-sm-row flex-column status align-items-start align-items-sm-center">

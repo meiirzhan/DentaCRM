@@ -1,26 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/app.css">
-    <link href="https://node_modules/air-datepicker/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
-    <script src="https://node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://node_modules/air-datepicker/dist/js/datepicker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.time-picker/latest/tui-time-picker.css">
-    <link rel="stylesheet" type="text/css" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css">
-    <link rel="stylesheet" type="text/css" href="/dist/tui-calendar.css">
-    <link rel="stylesheet" type="text/css" href="/css/default.css">
-    <link rel="stylesheet" type="text/css" href="/css/icons.css">
-    <title>@yield('title-block')</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
 <div class="container-fluid">
     <span class="d-sm-none d-block position-absolute" style="font-size:30px;cursor:pointer; left: 4%;"
           onclick="openNav()">&#9776;</span>
@@ -76,34 +55,11 @@
             </ul>
         </div>
         <div class="content-block">
-            <div class="d-flex flex-sm-row flex-column">
-                <h6 class="branch-address mr-auto order-sm-1 order-2">Филиал №1, пр. Абая</h6>
-                <div class="d-flex order-sm-2 order-1 justify-content-end">
-                    <a href="{{ route('registry-cabinet') }}">
-                    <div class="d-flex user-info">
-                        <img src="/img/avatar.svg" class="avatar" alt="Paris">
-                            <div class="d-flex flex-column align-items-center justify-content-center user-information">
-                                <p class="user-name">Адиева М. Б.</p>
-                                <p>Администратор</p>
-                            </div>
-                    </div>
-                    </a>
-                    <div class="bell">
-                        <button class="btn">
-                            <img src="/img/bell-on.svg" alt="">
-                        </button>
-                    </div>
-                    <div class="logout">
-                        <button class="btn">
-                            <img src="/img/logout.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.top-bar')
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-notes" role="tabpanel"
                      aria-labelledby="pills-notes-tab">
-                    @yield('content')
+                    @yield('tab')
                 </div>
                 <div class="tab-pane fade" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
                     <h3 class="page-name mt-4">Документы</h3>
@@ -290,200 +246,11 @@
 </div>
 
 {{--Modals--}}
-<div class="modal fade" id="modalAddPatient" tabindex="-1" role="dialog" aria-labelledby="modalAddPatientLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalAddPatientLabel">Добавить пациента</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex flex-column add-patient-input">
-                    <div class="d-flex">
-                        <div class="d-flex flex-column justify-content-between">
-                            <input type="text" class="form-control" placeholder="Ф. И. О.">
-                            <input type="date" class="form-control">
-                            <input type="tel" class="form-control" placeholder="Номер телефона">
-                            <input type="email" class="form-control" placeholder="Email">
-                            <select class="custom-select mr-sm-2">
-                                <option selected>Организация</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <select class="custom-select mr-sm-2">
-                                <option selected>Вид бонусов</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <input type="text" class="form-control" placeholder="ИИН">
-                            <input type="text" class="form-control" placeholder="Адрес">
-                            <input type="text" class="form-control" placeholder="Дополнительный номер">
-                            <select class="custom-select mr-sm-2">
-                                <option selected>Категория пациента</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <select class="custom-select mr-sm-2">
-                                <option selected>Прайс-лист</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" data-dismiss="modal">Отменить</button>
-                <button type="button" class="btn btn-primary">Сохранить</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalAddEntry" tabindex="-1" role="dialog" aria-labelledby="modalAddEntryLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="d-flex flex-column">
-                    <h5 class="modal-title" id="modalAddEntryLabel">Добавить запись</h5>
-                    <p class="entry-date-text">Запись на 12.06.2020 г. (12:30 - 13:00)</p>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex flex-column add-entry-input">
-                    <div class="d-flex justify-content-between">
-                        <input type="text" class="form-control" placeholder="Ф. И. О.">
-                        <input type="tel" class="form-control" placeholder="Номер телефона">
-                    </div>
-                    <div class="d-flex justify-content-between mt-3">
-                        <select class="custom-select mr-sm-2">
-                            <option selected>Услуга</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                        <select class="custom-select">
-                            <option selected>Специалист</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="d-flex mt-3">
-                        <textarea class="form-control" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" data-dismiss="modal">Отменить</button>
-                <button type="button" class="btn btn-primary">Записать</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalShowInfo" tabindex="-1" role="dialog" aria-labelledby="addShowInfoLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <p class="mr-2">Врач: Колесникова М. Е.</p>
-                <p class="mr-auto">(09:30 - 10:30)</p>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex show-info-part2 justify-content-between">
-                    <div class="d-flex flex-column">
-                        <p><span class="font-weight-bold mr-1">Пациент: </span>Нурлыбаев Талгат Болатович</p>
-                        <p><span class="font-weight-bold mr-1">Телефон:  </span>+7(777)123-56-78</p>
-                        <p><span class="font-weight-bold mr-1">Направление: </span>Самонаправленный</p>
-                        <p><span class="font-weight-bold mr-1">Запись: </span>09:30 - 10:30</p>
-                        <p><span class="font-weight-bold mr-1">Врач: </span>Колесникова Мария Евгеньевна</p>
-                        <p><span class="font-weight-bold mr-1">Процедура: </span>Первичный осмотр</p>
-                        <p><span class="font-weight-bold mr-1">Жалобы: </span>В профилактических целях</p>
-                    </div>
-                    <div class="d-flex flex-column align-items-center">
-                        <h6>Не подтвержден</h6>
-                        <button class="btn">Изменить запись</button>
-                        <button class="btn">Оплата</button>
-                        <button class="btn">Подтвердить</button>
-                        <button class="btn">Удалить</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="modalAddPayment" tabindex="-1" role="dialog" aria-labelledby="modalAddPaymentLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="d-flex flex-column">
-                    <h5 class="mb-4 mr-auto">Добавить оплату</h5>
-                    <div class="d-flex">
-                        <p class="modal-procedure-type">Стоматология (Муратова А.К.)</p>
-                        <p>Запись на 12.06.2020 г. (12:30 - 13:00)</p>
-                    </div>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex flex-column">
-                    <div class="row payment-details-row mt-2">
-                        <div class="col-1"><p>№</p></div>
-                        <div class="col-4"><p>Наименование</p></div>
-                        <div class="col"><p>Кол.</p></div>
-                        <div class="col"><p>Цена</p></div>
-                        <div class="col-3"><p>Сумма к оплате (тг)</p></div>
-                    </div>
-                    <div class="row mt-2 payment-details-row1">
-                        <div class="col-1"><p>1</p></div>
-                        <div class="col-4"><p>Первичная консультация</p></div>
-                        <div class="col"><p>1</p></div>
-                        <div class="col"><p>2 000 тг</p></div>
-                        <div class="col-3"><p>2000</p></div>
-                    </div>
-                </div>
-                <div class="d-flex mt-3">
-                    <div class="d-flex flex-column mr-auto">
-                        <label class="mr-sm-2 payment-method" for="inlineFormCustomSelect">Способ оплаты</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                            <option selected>Наличные</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="d-flex flex-column justify-content-between res-box">
-                        <h6>Итог</h6>
-                        <h6>22 000 тенге</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-cancel" data-dismiss="modal">Отменить</button>
-                <button type="button" class="btn btn-primary">Оплатить
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+@include('layouts.modals.add-patient')
+@include('layouts.modals.add-entry')
+@include('layouts.modals.show-info')
+@include('layouts.modals.add-payment')
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -504,65 +271,4 @@
 <script src="/scripts/data/schedules.js"></script>
 <script src="/scripts/app.js"></script>
 <script src="/scripts/script.js"></script>
-{{--<script>--}}
-
-{{--    var cal = new tui.Calendar('#calendar', {--}}
-
-{{--        // 'day', 'week', 'month'--}}
-{{--        defaultView: 'day',--}}
-
-{{--        // shows the milestone and task in weekly, daily view--}}
-{{--        taskView: true,--}}
-
-{{--        // shows the all day and time grid in weekly, daily view--}}
-{{--        scheduleView: true,--}}
-
-{{--        // template options--}}
-{{--        template: {--}}
-{{--            milestone: function(schedule) {--}}
-{{--                return '<span style="color:red;"><i class="fa fa-flag"></i> ' + schedule.title + '</span>';--}}
-{{--            },--}}
-{{--            milestoneTitle: function() {--}}
-{{--                return 'Milestone';--}}
-{{--            },--}}
-{{--            task: function(schedule) {--}}
-{{--                return '&nbsp;&nbsp;#' + schedule.title;--}}
-{{--            },--}}
-{{--            taskTitle: function() {--}}
-{{--                return '<label><input type="checkbox" />Task</label>';--}}
-{{--            },--}}
-{{--            allday: function(schedule) {--}}
-{{--                return schedule.title + ' <i class="fa fa-refresh"></i>';--}}
-{{--            },--}}
-{{--            alldayTitle: function() {--}}
-{{--                return 'All Day';--}}
-{{--            },--}}
-{{--            time: function(schedule) {--}}
-{{--                return schedule.title + ' <i class="fa fa-refresh"></i>' + schedule.start;--}}
-{{--            }--}}
-{{--        },--}}
-{{--        week: {--}}
-{{--            daynames: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],--}}
-{{--            startDayOfWeek: 0,--}}
-{{--            narrowWeekend: true--}}
-{{--        },--}}
-{{--        month: {--}}
-{{--            daynames: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],--}}
-{{--            startDayOfWeek: 0,--}}
-{{--            narrowWeekend: true--}}
-{{--        },--}}
-
-{{--        // list of Calendars that can be used to add new schedule--}}
-{{--        calendars: [],--}}
-
-{{--        // whether use default creation popup or not--}}
-{{--        useCreationPopup: true,--}}
-
-{{--        // whether use default detail popup or not--}}
-{{--        useDetailPopup: true--}}
-
-{{--    });--}}
-
-{{--</script>--}}
-</body>
-</html>
+@endsection

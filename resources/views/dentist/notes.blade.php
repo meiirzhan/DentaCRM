@@ -2,7 +2,7 @@
 
 @section('title-block') Записи @endsection
 
-@section('content')
+@section('tab')
     <div class="d-none option-box">
         <div class="d-flex flex-column mr-auto">
             <div class="d-flex flex-sm-row flex-column status align-items-start align-items-sm-center">
@@ -110,25 +110,6 @@
                             <i class="calendar-icon ic_view_week"></i>3 недели
                         </a>
                     </li>
-{{--                    <li role="presentation" class="dropdown-divider"></li>--}}
-                    {{--                    <li role="presentation">--}}
-                    {{--                        <a role="menuitem" data-action="toggle-workweek">--}}
-                    {{--                            <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-workweek" checked>--}}
-                    {{--                            <span class="checkbox-title"></span>Показать выходные--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li role="presentation">--}}
-                    {{--                        <a role="menuitem" data-action="toggle-start-day-1">--}}
-                    {{--                            <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-start-day-1">--}}
-                    {{--                            <span class="checkbox-title"></span>Start Week on Monday--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
-                    {{--                    <li role="presentation">--}}
-                    {{--                        <a role="menuitem" data-action="toggle-narrow-weekend">--}}
-                    {{--                            <input type="checkbox" class="tui-full-calendar-checkbox-square" value="toggle-narrow-weekend">--}}
-                    {{--                            <span class="checkbox-title"></span>Narrower than weekdays--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
                 </ul>
             </span>
                 <span id="menu-navi">

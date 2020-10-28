@@ -1,6 +1,6 @@
 @extends('layouts.accountant')
 
-@section('content')
+@section('content_a')
 <h3 class="page-name mt-4">Личный кабинет</h3>
 <div class="d-flex flex-sm-row flex-column personal-cabinet-block">
     <div class="d-flex flex-column personal-cabinet-box1">
