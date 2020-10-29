@@ -1,4 +1,16 @@
-@extends('layouts.dentist')
+@php
+    if (str_contains(url()->current(), 'booker')){
+        $layouts = 'accountant';
+    }
+    else if(str_contains(url()->current(), 'dentist')){
+        $layouts = 'dentist';
+    }
+    else if(str_contains(url()->current(), 'registry')){
+        $layouts = 'registry';
+    }
+@endphp
+@extends('layouts.'.$layouts)
+@section('title-block') Настройки @endsection
 @section('tab')
         <h3 class="page-name mt-4">Настройки</h3>
         <div class="d-flex flex-wrap align-items-end justify-content-start settings-block">

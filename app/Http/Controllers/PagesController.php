@@ -43,18 +43,48 @@ class PagesController extends Controller
         return view('dentist.notes-detailed', compact('user'));
     }
 
+
     public function showBooker(){
         $user = Auth::user();
         return view('accountant.block', compact('user'));
+    }
+    public function showBookerStock(){
+        $user = Auth::user();
+        return view('accountant.stock', compact('user'));
+    }
+    public function showBookerDocs(){
+        $user = Auth::user();
+        return view('layouts.components.docs', compact('user'));
+    }
+    public function showBookerReport(){
+        $user = Auth::user();
+        return view('layouts.components.report', compact('user'));
+    }
+    public function showBookerSettings(){
+        $user = Auth::user();
+        return view('layouts.components.settings', compact('user'));
     }
     public function showBookerCabinet(){
         $user = Auth::user();
         return view('accountant.cabinet', compact('user'));
     }
 
+
     public function showRegistry(){
         $user = Auth::user();
         return view('registry.notes', compact('user'));
+    }
+    public function showRegistryDocs(){
+        $user = Auth::user();
+        return view('layouts.components.docs', compact('user'));
+    }
+    public function showRegistryReport(){
+        $user = Auth::user();
+        return view('layouts.components.report', compact('user'));
+    }
+    public function showRegistrySettings(){
+        $user = Auth::user();
+        return view('layouts.components.settings', compact('user'));
     }
     public function showRegistryCabinet(){
         $user = Auth::user();

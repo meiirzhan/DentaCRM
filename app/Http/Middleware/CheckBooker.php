@@ -17,7 +17,7 @@ class CheckBooker
     public function handle($request, Closure $next)
     {
         if (Auth::user()->role_id != 5){
-            return redirect('/');
+            return redirect()->back();
         }
         return $next($request);
     }

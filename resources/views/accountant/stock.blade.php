@@ -1,4 +1,4 @@
-@extends('layouts.dentist')
+@extends('layouts.accountant')
 @section('title-block') Склад @endsection
 @section('tab')
     <h3 class="page-name mt-4">Склад</h3>

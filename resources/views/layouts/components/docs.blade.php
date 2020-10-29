@@ -1,4 +1,17 @@
-@extends('layouts.dentist')
+@php
+if (str_contains(url()->current(), 'booker')){
+    $layouts = 'accountant';
+}
+else if(str_contains(url()->current(), 'dentist')){
+    $layouts = 'dentist';
+}
+else if(str_contains(url()->current(), 'registry')){
+    $layouts = 'registry';
+}
+@endphp
+@extends('layouts.'.$layouts)
+
+@section('title-block') Документы @endsection
 @section('tab')
     <h3 class="page-name mt-4">Документы</h3>
     <div class="d-flex flex-column documents-block">

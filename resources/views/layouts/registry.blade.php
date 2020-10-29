@@ -10,20 +10,16 @@
                 <div class="menu">
                     <ul class="nav nav-pills flex-column" id="pills-tab">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pills-notes-tab" data-toggle="pill" href="#pills-notes"
-                               role="tab" aria-controls="pills-notes" aria-selected="true">Записи</a>
+                            <a class="nav-link {{(url()->current() == route('registry-notes')?'active':'')}}" href="{{route('registry-notes')}}">Записи</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-documents-tab" data-toggle="pill" href="#pills-documents"
-                               role="tab" aria-controls="pills-documents" aria-selected="false">Документы</a>
+                            <a class="nav-link {{(str_contains(url()->current(), 'docs')?'active':'')}}" href="{{route('registry.docs')}}">Документы</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-reports-tab" data-toggle="pill" href="#pills-reports"
-                               role="tab" aria-controls="pills-reports" aria-selected="false">Отчеты</a>
+                            <a class="nav-link {{(str_contains(url()->current(), 'report')?'active':'')}}" href="{{route('registry.report')}}">Отчеты</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-settings-tab" data-toggle="pill" href="#pills-settings"
-                               role="tab" aria-controls="pills-settings" aria-selected="false">Настройки</a>
+                            <a class="nav-link {{(str_contains(url()->current(), 'settings')?'active':'')}}" href="{{route('registry.settings')}}">Настройки</a>
                         </li>
                     </ul>
                 </div>
@@ -33,24 +29,16 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul class="nav nav-pills flex-column" id="pills-tab">
                 <li class="nav-item">
-                    <a class="nav-link active" id="pills-notes-tab" onclick="closeNav()" data-toggle="pill"
-                       href="#pills-notes"
-                       role="tab" aria-controls="pills-notes" aria-selected="true">Записи</a>
+                    <a class="nav-link {{(url()->current() == route('registry-notes')?'active':'')}}" href="{{route('registry-notes')}}">Записи</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-documents-tab" onclick="closeNav()" data-toggle="pill"
-                       href="#pills-documents"
-                       role="tab" aria-controls="pills-documents" aria-selected="false">Документы</a>
+                    <a class="nav-link {{(str_contains(url()->current(), 'docs')?'active':'')}}" href="{{route('registry.docs')}}">Документы</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-reports-tab" onclick="closeNav()" data-toggle="pill"
-                       href="#pills-reports"
-                       role="tab" aria-controls="pills-reports" aria-selected="false">Отчеты</a>
+                    <a class="nav-link {{(str_contains(url()->current(), 'report')?'active':'')}}" href="{{route('registry.report')}}">Отчеты</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="pills-settings-tab" onclick="closeNav()" data-toggle="pill"
-                       href="#pills-settings"
-                       role="tab" aria-controls="pills-settings" aria-selected="false">Настройки</a>
+                    <a class="nav-link {{(str_contains(url()->current(), 'settings')?'active':'')}}" href="{{route('registry.settings')}}">Настройки</a>
                 </li>
             </ul>
         </div>

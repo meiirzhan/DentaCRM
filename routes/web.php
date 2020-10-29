@@ -27,6 +27,9 @@ Route::group([
 ], function (){
     Route::get('/', 'PagesController@showRegistry')->name('registry-notes');
     Route::get('/notes', 'PagesController@showRegistryDetailed')->name('registry-notes-detailed');
+    Route::get('/docs', 'PagesController@showRegistryDocs')->name('registry.docs');
+    Route::get('/report', 'PagesController@showRegistryReport')->name('registry.report');
+    Route::get('/settings', 'PagesController@showRegistrySettings')->name('registry.settings');
     Route::get('/cabinet', 'PagesController@showRegistryCabinet')->name('registry-cabinet');
 });
 
@@ -54,6 +57,10 @@ Route::group([
     'middleware' => ['auth', 'booker'],
 ], function (){
     Route::get('/', 'PagesController@showBooker')->name('accountant-block');
+    Route::get('/docs', 'PagesController@showBookerDocs')->name('booker.docs');
+    Route::get('/stock', 'PagesController@showBookerStock')->name('booker.stock');
+    Route::get('/report', 'PagesController@showBookerReport')->name('booker.report');
+    Route::get('/settings', 'PagesController@showBookerSettings')->name('booker.settings');
     Route::get('/cabinet', 'PagesController@showBookerCabinet')->name('accountant-cabinet');
 });
 

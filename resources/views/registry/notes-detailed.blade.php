@@ -2,7 +2,7 @@
 
 @section('title-block') Записи @endsection
 
-@section('content')
+@section('teb')
     <h3 class="client-name">Иванов Иван</h3>
     <div class="d-flex flex-sm-row flex-column client-info-block">
         <div class="d-flex flex-column client-info-block1">

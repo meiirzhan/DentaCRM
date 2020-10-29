@@ -1,5 +1,5 @@
 @extends('layouts.dentist')
-
+@section('title-block') Личный кабинет @endsection
 @section('tab')
 <h3 class="page-name mt-4">Личный кабинет</h3>
 <div class="d-flex flex-sm-row flex-column personal-cabinet-block">

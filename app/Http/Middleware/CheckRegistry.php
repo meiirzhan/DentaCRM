@@ -17,7 +17,7 @@ class CheckRegistry
     public function handle($request, Closure $next)
     {
         if (Auth::user()->role_id != 3){
-            return redirect('/');
+            return redirect()->back();
         }
         return $next($request);
     }
