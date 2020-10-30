@@ -63,7 +63,7 @@
                     <td>{{date("d.m.Y", strtotime($product->date))??''}}</td>
                     <td>
                         <div class="d-flex">
-                            <button class="btn p-0 mr-3"><img src="../img/edit1.svg" alt=""></button>
+                            <button onclick="window.location='{{route('product.edit', $product->id)}}'" class="btn p-0 mr-3"><img src="../img/edit1.svg" alt=""></button>
                             <button onclick="window.location='{{route('product.delete', $product->id)}}'" class="btn p-0"><img src="../img/x-grey.svg" alt=""></button>
                         </div>
                     </td>

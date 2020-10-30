@@ -30,7 +30,7 @@ Route::group([
     Route::get('/docs', 'PagesController@showRegistryDocs')->name('registry.docs');
     Route::get('/report', 'PagesController@showRegistryReport')->name('registry.report');
     Route::get('/settings', 'PagesController@showRegistrySettings')->name('registry.settings');
-    Route::get('/cabinet', 'PagesController@showRegistryCabinet')->name('registry-cabinet');
+    Route::get('/cabinet', 'PagesController@showRegistryCabinet')->name('registry.cabinet');
 });
 
 /*
@@ -46,7 +46,7 @@ Route::group([
     Route::get('/stock', 'PagesController@showDentistStock')->name('dentist.stock');
     Route::get('/report', 'PagesController@showDentistReport')->name('dentist.report');
     Route::get('/settings', 'PagesController@showDentistSettings')->name('dentist.settings');
-    Route::get('/cabinet', 'PagesController@showDentistCabinet')->name('dentist-cabinet');
+    Route::get('/cabinet', 'PagesController@showDentistCabinet')->name('dentist.cabinet');
 });
 
 /*
@@ -56,16 +56,25 @@ Route::group([
     'prefix' => 'booker',
     'middleware' => ['auth', 'booker'],
 ], function (){
-    Route::get('/', 'PagesController@showBooker')->name('accountant-block');
+    Route::get('/', 'PagesController@showBooker')->name('booker.block');
     Route::get('/docs', 'PagesController@showBookerDocs')->name('booker.docs');
     Route::get('/stock', 'PagesController@showBookerStock')->name('booker.stock');
     Route::get('/report', 'PagesController@showBookerReport')->name('booker.report');
     Route::get('/settings', 'PagesController@showBookerSettings')->name('booker.settings');
-    Route::get('/cabinet', 'PagesController@showBookerCabinet')->name('accountant-cabinet');
+    Route::get('/cabinet', 'PagesController@showBookerCabinet')->name('booker.cabinet');
 });
 
-Route::post('add/product', 'ProductsController@addProduct')->name('product.add');
-Route::get('delete/product/{id}', 'ProductsController@deleteProduct')->name('product.delete');
+Route::prefix('product')->group(function (){
+    Route::post('/add', 'ProductsController@add')->name('product.add');
+    Route::get('/delete/{id}', 'ProductsController@delete')->name('product.delete');
+    Route::get('/edit/{id}', 'ProductsController@edit')->name('product.edit');
+    Route::post('/update/{id}', 'ProductsController@update')->name('product.update');
+});
+
+Route::prefix('user')->group(function (){
+    Route::post('/certificate', 'UsersController@uploadCertificates')->name('user.image');
+    Route::post('/update', 'UsersController@update')->name('user.update');
+});
 
 //Route::get('/registry/notes/modalAddPatient', function () {
 //    return view('registry.modalAddPatient');

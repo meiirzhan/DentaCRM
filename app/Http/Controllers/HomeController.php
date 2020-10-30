@@ -31,7 +31,7 @@ class HomeController extends Controller
         else if($user->role_id == 4)
             return redirect()->route('dentist-notes');
         else if($user->role_id == 5)
-            return redirect()->route('accountant-block');
+            return redirect()->route('booker.block');
         else
             return redirect()->back();
     }

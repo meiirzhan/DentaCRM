@@ -80,7 +80,7 @@
                 <div class="menu">
                     <ul class="nav nav-pills flex-column" id="pills-tab">
                         <li class="nav-item">
-                            <a class="nav-link {{(url()->current() == route('accountant-block')?'active':'')}}" href="{{route('accountant-block')}}">Статистика</a>
+                            <a class="nav-link {{(url()->current() == route('booker.block')?'active':'')}}" href="{{route('booker.block')}}">Статистика</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{(str_contains(url()->current(), 'docs')?'active':'')}}" href="{{route('booker.docs')}}">Документы</a>
@@ -102,7 +102,7 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul class="nav nav-pills flex-column" id="pills-tab">
                 <li class="nav-item">
-                    <a class="nav-link {{(url()->current() == route('accountant-block')?'active':'')}}" href="{{route('accountant-block')}}">Статистика</a>
+                    <a class="nav-link {{(url()->current() == route('booker.block')?'active':'')}}" href="{{route('booker.block')}}">Статистика</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{(str_contains(url()->current(), 'docs')?'active':'')}}" href="{{route('booker.docs')}}">Документы</a>

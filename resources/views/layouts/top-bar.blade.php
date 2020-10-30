@@ -1,7 +1,7 @@
 <div class="d-flex flex-sm-row flex-column">
     <h6 class="branch-address mr-auto order-sm-1 order-2">{{\App\Address::first()->name}}</h6>
     <div class="d-flex order-sm-2 order-1 justify-content-end">
-        <a href="{{ url('/'.$user->role->name).'/cabinet' }}">
+        <a href="{{ route($user->role->name.'.cabinet') }}">
             <div class="d-flex user-info">
                 <img src="/img/avatar.svg" class="avatar" alt="Paris">
                 <div class="d-flex flex-column align-items-center justify-content-center user-information">
